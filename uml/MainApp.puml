@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MainApp{
+Database data
+
++ static void main(String[] args)
++ void start(Stage stage)
+}
+
+class Database{
+ArrayList<TodoList> todoLists
+- add_todo(String title)
+- rm_todo(String title)
+.. GUI classes ..
+- display_items(String title)
+- display_incompleted(String title)
+- display_completed(String title)
+- save_oneTodo(String title)
+- save_all(String path)
+- load_one(String path, String title)
+- load_all(String path)
+'implement GUI lookup of stored todolists; display all?
+}
+'TODO figure out where in hierarchy the methods should be
+class TodoList {
+'implement sorting and better then linear lookup by title
+- String title
+- ArrayList<Item> items
+- edit_title(String title)
+'add_item will have to call Item class constructor
+- add_item()
+- rm_item(Item item)
+}
+
+class Item {
+- String description
+- LocalDate duedate <YYYY-MM-DD>
+- bool complete
+- set_duedate()
+- set_description()
+- set_complete()
+}
+Item "many" -up-> "1" TodoList::items : contains
+TodoList "many" -up-> "1" Database::todoLists : contains
+Database -up-> MainApp : uses
+
+@enduml
