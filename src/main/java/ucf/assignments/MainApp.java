@@ -16,15 +16,15 @@ import java.io.IOException;
 public class MainApp extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GUILayout.fxml"));
+    public void start(Stage primaryStage) throws IOException {
 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        Parent root = FXMLLoader.load(getClass().getResource("BaseScene.fxml"));
+        Scene groundScene = new Scene(root);
+        groundScene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        primaryStage.setTitle("Basic Task Keeper");
 
-        stage.setTitle("JavaFX and Gradle");
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(groundScene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

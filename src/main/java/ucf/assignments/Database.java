@@ -5,20 +5,25 @@
 
 package ucf.assignments;
 
-import java.nio.file.Path;
+import javafx.scene.control.ListView;
 import java.util.ArrayList;
 
 class Database {
+
     ArrayList<TodoList> todoLists;
-    Database(){ //default constructor to be called at the beginning of the program
-        //todoLists = new ArrayList<TodoList>();
-        //todoLists.add_todo(new TodoList("Here's your first TODO List"));
+    //ListView<String> viewToDo;
+
+    //default constructor to be called at the beginning of the program
+    Database(){
+        todoLists = new ArrayList<TodoList>();
+        //viewToDo = new ListView<String>();
+        add_todo("Here's a blank TODO List");
     }
 
     private void add_todo(String new_title){
-        //creates an instance of `todoList`
-        //then calls the constructor of a `TodoList` object and sets TodoList.title = new_title
-        //and then appends said object to the `todoLists` ArrayList
+        TodoList newToDo = new TodoList(new_title);
+        todoLists.add(newToDo);
+        //viewToDo.getItems().add(newToDo.title);
     }
 
     private void rm_todo(String title){

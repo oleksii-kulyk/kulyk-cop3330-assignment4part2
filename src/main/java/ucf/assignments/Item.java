@@ -17,26 +17,37 @@ LocalDate duedate; //<YYYY-MM-DD>
 //Can be represented as a simple checkmark in the GUI
 boolean complete;
 
-    Item(){ //creates an `Item` object and prompts the user to enter the description and the due date
-        //complete = false;
+    //creates an `Item` object and prompts the user to enter the description and the due date
+    Item(){
+        complete = false;
         //set_description();
         //set_duedate();
     }
 
-    Item(String default_message){ //creates a default blank Item
-        //complete = false;
-        //description = default_message;
-        //duedate = LocalDate.now();
-
+    //creates a default blank Item
+    Item(String default_message){
+        complete = false;
+        description = default_message;
+        duedate = LocalDate.now();
     }
 
-    private void set_description(){
+    String get_description(){
+        return description;
+    }
+
+    LocalDate get_duedate(){
+        return duedate;
+    }
+
+    private void set_description(String description){
+        this.description = description;
         //creates an overlay dialog that displays the description stored in the Item
         //then lets the user enter or edit the description for the Item
         //the entered text is then stored as a String and assigned to the `description` variable
     }
 
-    private void set_duedate(){
+    private void set_duedate(LocalDate duedate){
+        this.duedate = duedate;
         //creates an overlay dialog with three separate fields <YYYY>, <MM>, <DD> that prompts to enter the date as integers
         //three fields are then validated to see if a user entered an integer
         //each field is then assigned to a separate variable and the date is stored within `duedate` using `LocalDate.of()`

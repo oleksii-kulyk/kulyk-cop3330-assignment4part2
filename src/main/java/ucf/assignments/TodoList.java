@@ -5,32 +5,40 @@
 
 package ucf.assignments;
 
+import javafx.scene.control.ListView;
 import java.util.ArrayList;
 
 class TodoList {
     ArrayList<Item> items;
+    //ListView<String> viewItems;
     String title;
-    TodoList(String new_title){ //default constructor for a TodoList
-        //items = new ArrayList<Item>();
-        //title = new_title;
-        //items.add_item(new Item("Hello, this is a blank Item"));
+
+    //default constructor for a TodoList
+    TodoList(String new_title){
+        items = new ArrayList<Item>();
+        //viewItems = new ListView<String>();
+        title = new_title;
+        add_item("Hello, this is a blank Item");
     }
 
-    private void add_item(){
-        //calls Item constructor and appends the Item to the ArrayList `items`
+
+
+    void add_item(){
+        items.add(new Item());
     }
 
-    private void add_item(String default_message){
-        //calls Item(default_message) constructor and appends the Item to the ArrayList `items`
-        //adds a blank item with a default message inside and with the `duedate` set by LocalTime.now()
+    void add_item(String default_message){
+        Item newItem = new Item(default_message);       //creates an Item with a default message and duedate of LocalTime.now()
+        items.add(newItem);                             //appends the above Item to the ArrayList of Items of this TodoList
+        //viewItems.getItems().add(newItem.description);  //adds the description of the above Item to be displayed by viewItems ListView
     }
 
-    private void rm_item(){
+    void rm_item(){
         //pulls up a GUI dialog for confirmation
         //searches for the selected item and removes it from the ArrayList
     }
 
-    private void edit_title(String new_title){
+    void edit_title(String new_title){
         //title = new_title;
     }
 }
